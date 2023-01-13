@@ -1,38 +1,224 @@
-.App {
-  text-align: center;
+/* /**
+*! CSS Variables
+**/
+
+:root{
+    --primary-purple:#460C68;
+    --secondary-purple:#7F167F;
+    --primary-pink:#CB1C8D;
+    --secondary-pink:#F56EB3;
+} */
+
+/**
+*! App Component
+**/
+
+.App{
+    margin: 2rem 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/**
+*! Header Component
+**/
+
+header{
+    padding: 1rem;
+    background-color: var(--primary-purple);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1{
+    font-size: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-link {
+    padding: 0.2rem 0.4rem;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-link.active{
+    color: var(--primary-pink);
+   border-bottom: 2px solid var(--primary-pink);
+}
+
+/**
+*! Home Component
+**/
+
+.home{
+    padding: 1rem;
+}
+
+.card{
+    margin: 1rem 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 0.6rem;
+    color: black;
+}
+
+/**
+*! Feedback Form Component
+**/
+
+.feedback-form .title{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.feedback-form .ratings-container{
+    margin: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-form .circle{
+    cursor: pointer;
+    border: 2px solid #333;
+    width: 34px;
+    height: 34px;
+    background-color: rgb(243, 236, 236);
+    border-radius: 50%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-form .circle:hover{
+    border: 2px solid var(--primary-pink);
+    background-color: white;
+    color: var(--primary-pink);
+}
+
+.form-control{
+    margin: 1rem 0.6rem;
+    border: 1px solid var(--primary-purple);
+    border-radius: 4px;
+    height: 48px;
+    padding: 0.4rem 0.6rem;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 4fr 1fr;
+}
+
+.form-control input{
+    outline: none;
+    border: none;
+}
+
+.send-btn{
+    border-radius: 4px;
+    background-color: var(--secondary-purple);
+    color: white;
+}
+
+.send-btn:hover{
+    border: 2px solid var(--secondary-purple);
+    border-radius: 4px;
+    background-color: white;
+    color: var(--secondary-purple);
+}
+
+/**
+*! Feedback List Component
+**/
+
+.feedback-list .title{
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**
+*! Feedback Component
+**/
+
+.feedback{
+    padding: 0.8rem;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.feedback .rating{
+    position: absolute;
+    top: -18px;
+    left: -20px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--primary-pink);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-pink);
+    color: white;
+}
+
+.feedback .review{
+    margin-left: 1rem;
+    text-align: left;
+}
+
+.feedback .btns-container{
+    position: absolute;
+    top: -5px;
+    right: 8px;
+}
+
+.fa{
+    margin-left: 0.4rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/**
+*! About Component
+**/
+
+.about{
+    padding: 1rem;
+}
+
+.about .title{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.about p{
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.page-not-found .title{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.page-not-found p{
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/**
+*! Media Queries
+**/
+
+main{
+    margin: auto;
+    max-width: 620px;
 }
