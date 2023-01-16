@@ -1,11 +1,22 @@
 import FeedbackForm from "./FeedbackForm";
 import FeedbackList from "./FeedbackList";
 
-const Home = () => {
+const Home = ({
+  feedbacks,
+  addFeedback,
+  deleteFeedback,
+  handleEdit,
+  isEditing,
+  editId,
+}) => {
   return (
     <div className="home">
-      <FeedbackForm />
-      <FeedbackList />
+      <FeedbackForm addFeedback={addFeedback} />
+      <FeedbackList
+        feedbacks={feedbacks}
+        deleteFeedback={deleteFeedback}
+        handleEdit={handleEdit}
+      />
     </div>
   );
 };
