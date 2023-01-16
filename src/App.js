@@ -4,7 +4,7 @@ import "./App.css";
 import feedbackData from "./data/Data";
 
 // Importing Hooks
-import { useState } from "react";
+import { useState, createContext } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Importing Components
@@ -12,6 +12,8 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import PageNotFound from "./components/PageNotFound";
+
+export const FeedbackContext = createContext();
 
 function App() {
   const [feedbacks, setFeedbacks] = useState(feedbackData);
@@ -29,27 +31,31 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  feedbacks={feedbacks}
-                  addFeedback={addFeedback}
-                  deleteFeedback={deleteFeedback}
-                />
-              }
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-      </Router>
-    </div>
+    <FeedbackContext.Provider
+      value={{ feedbacks, addFeedback, deleteFeedback }}
+    >
+      <div className="App">
+        <Router>
+          <Header />
+          <main>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Home
+                    feedbacks={feedbacks}
+                    addFeedback={addFeedback}
+                    deleteFeedback={deleteFeedback}
+                  />
+                }
+              />
+              <Route path="/about" element={<About />} />
+              <Route path="/*" element={<PageNotFound />} />
+            </Routes>
+          </main>
+        </Router>
+      </div>
+    </FeedbackContext.Provider>
   );
 }
 

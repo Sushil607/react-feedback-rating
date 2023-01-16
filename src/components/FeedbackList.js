@@ -1,6 +1,10 @@
 import Feedback from "./Feedback";
+import { useContext } from "react";
+import { FeedbackContext } from "../App";
 
-const FeedbackList = ({ feedbacks, deleteFeedback, handleEdit }) => {
+const FeedbackList = () => {
+  const { feedbacks, addFeedback, deleteFeedback } =
+    useContext(FeedbackContext);
   // total number of feedbacks
   const noOfFeedbacks = feedbacks.length;
 
@@ -20,14 +24,7 @@ const FeedbackList = ({ feedbacks, deleteFeedback, handleEdit }) => {
         <div>Average Rating : {noOfFeedbacks ? avgRating : 0}</div>
       </div>
       {feedbacks.map((feedback) => {
-        return (
-          <Feedback
-            key={feedback.id}
-            feedback={feedback}
-            deleteFeedback={deleteFeedback}
-            handleEdit={handleEdit}
-          />
-        );
+        return <Feedback key={feedback.id} feedback={feedback} />;
       })}
     </div>
   );

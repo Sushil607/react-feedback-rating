@@ -8,7 +8,7 @@ const About = () => {
         <p>
           This is a Feedback Rating Component developed with ReactJs library. It
           is built by me, Sushilkumar Bodade. I have used React state, React
-          router, controlled inputs in this project.
+          router, controlled inputs, useState, useContext in this project.
         </p>
       </Card>
     </div>
