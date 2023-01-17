@@ -1,25 +1,8 @@
-/* /**
-*! CSS Variables
-**/
-
-:root{
-    --primary-purple:#460C68;
-    --secondary-purple:#7F167F;
-    --primary-pink:#CB1C8D;
-    --secondary-pink:#F56EB3;
-} */
-
-/**
-*! App Component
-**/
 
 .App{
-    margin: 2rem 1rem;
+    margin: 0 1rem;
 }
 
-/**
-*! Header Component
-**/
 
 header{
     padding: 1rem;
@@ -49,9 +32,6 @@ nav{
    border-bottom: 2px solid var(--primary-pink);
 }
 
-/**
-*! Home Component
-**/
 
 .home{
     padding: 1rem;
@@ -65,9 +45,6 @@ nav{
     color: black;
 }
 
-/**
-*! Feedback Form Component
-**/
 
 .feedback-form .title{
     font-size: 1rem;
@@ -135,9 +112,6 @@ nav{
     color: var(--secondary-purple);
 }
 
-/**
-*! Feedback List Component
-**/
 
 .feedback-list .title{
     margin: 0.4rem 0;
@@ -148,9 +122,6 @@ nav{
     align-items: center;
 }
 
-/**
-*! Feedback Component
-**/
 
 .feedback{
     padding: 0.8rem;
@@ -190,9 +161,6 @@ nav{
     font-size: 0.9rem;
 }
 
-/**
-*! About Component
-**/
 
 .about{
     padding: 1rem;
@@ -209,9 +177,7 @@ nav{
     text-align: center;
 }
 
-/**
-*! Page Not Found Component
-**/
+
 
 .page-not-found .title{
     font-size: 1rem;
@@ -224,9 +190,7 @@ nav{
     text-align: center;
 }
 
-/**
-*! Media Queries
-**/
+
 
 main{
     margin: auto;
