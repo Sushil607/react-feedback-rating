@@ -6,24 +6,52 @@ import { FeedbackContext } from "../App";
 
 import Card from "./Card";
 
-import { useState } from "react";
-
 const FeedbackForm = () => {
-  const { addFeedback } = useContext(FeedbackContext);
-  // Input States
-  let [rating, setRating] = useState(0);
-  const [review, setReview] = useState("");
+  const {
+    addFeedback,
+    rating,
+    setRating,
+    review,
+    setReview,
+    feedbacks,
+    setFeedbacks,
+    isEditing,
+    editID,
+    setIsEditing,
+  } = useContext(FeedbackContext);
 
   // Consoling the data
   const submitData = (e) => {
     // prevent the default action
     e.preventDefault();
+    let srating, sreview;
     // if values aren't empty
     if (rating != 0 && review !== "") {
-      rating = Number(rating);
-      const newFeedback = { id: uuid(), rating, review };
-      // sending new feedback
-      addFeedback(newFeedback);
+      // if editing mode is ON
+      if (isEditing === true) {
+        setFeedbacks(
+          feedbacks.map((feedback) => {
+            if (feedback.id === editID) {
+              srating = Number(rating);
+              sreview = review;
+              // console.log({
+              //   rating: Number(srating),
+              //   review: sreview,
+              //   ...feedback,
+              // });
+              setIsEditing(false);
+              return { rating: Number(srating), review: sreview, id: editID };
+            }
+            return feedback;
+          })
+        );
+      } else {
+        srating = Number(rating);
+        let newFeedback = { id: uuid(), rating: srating, review };
+        // sending new feedback
+        addFeedback(newFeedback);
+      }
+
       // clearing out formfields
       setRating(0);
       setReview("");
@@ -31,7 +59,7 @@ const FeedbackForm = () => {
   };
   return (
     <Card>
-      <form className="feedback-form" onClick={submitData}>
+      <form className="feedback-form" onSubmit={submitData}>
         <div className="title">How would you rate this product?</div>
         <div className="ratings-container">
           <div

@@ -17,11 +17,14 @@ export const FeedbackContext = createContext();
 
 function App() {
   const [feedbacks, setFeedbacks] = useState(feedbackData);
+  let [rating, setRating] = useState(0);
+  const [review, setReview] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
 
   // Adding feedback
-  const addFeedback = (feedback) => {
-    const newFeedback = JSON.stringify(feedback);
-    setFeedbacks([JSON.parse(newFeedback), ...feedbacks]);
+  const addFeedback = (newFeedback) => {
+    setFeedbacks([newFeedback, ...feedbacks]);
   };
 
   // Delete feedback
@@ -30,9 +33,32 @@ function App() {
     setFeedbacks(newFeedbacks);
   };
 
+  // Handle Edit
+  const handleEdit = (id) => {
+    setIsEditing(true);
+    setEditID(id);
+    // populate data in fields
+    let targetFeedback = feedbacks.filter((feedback) => feedback.id === id)[0];
+    setReview(targetFeedback.review);
+    setRating(targetFeedback.rating);
+  };
+
   return (
     <FeedbackContext.Provider
-      value={{ feedbacks, addFeedback, deleteFeedback }}
+      value={{
+        feedbacks,
+        setFeedbacks,
+        addFeedback,
+        deleteFeedback,
+        handleEdit,
+        rating,
+        setRating,
+        review,
+        setReview,
+        isEditing,
+        editID,
+        setIsEditing,
+      }}
     >
       <div className="App">
         <Router>

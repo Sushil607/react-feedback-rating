@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { FeedbackContext } from "../App";
 
 const FeedbackList = () => {
-  const { feedbacks, addFeedback, deleteFeedback } =
-    useContext(FeedbackContext);
+  const { feedbacks } = useContext(FeedbackContext);
   // total number of feedbacks
   const noOfFeedbacks = feedbacks.length;
 
